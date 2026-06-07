@@ -1,0 +1,362 @@
+/* ===================================
+   Responsive Design
+   =================================== */
+
+/* タブレット (768px以下) */
+@media (max-width: 768px) {
+    /* ナビゲーション */
+    .nav-menu {
+        position: fixed;
+        top: 80px;
+        left: -100%;
+        width: 100%;
+        height: calc(100vh - 80px);
+        background: rgba(26, 35, 50, 0.98);
+        backdrop-filter: blur(10px);
+        flex-direction: column;
+        padding: 2rem;
+        gap: 0;
+        transition: left 0.3s ease;
+        overflow-y: auto;
+    }
+
+    .nav-menu.active {
+        left: 0;
+    }
+
+    .nav-menu li {
+        width: 100%;
+        margin-bottom: 1rem;
+    }
+
+    .nav-link {
+        display: block;
+        padding: 1rem;
+        font-size: 1.1rem;
+    }
+
+    .nav-toggle {
+        display: block;
+    }
+
+    /* ヒーローセクション */
+    .hero-title {
+        font-size: 2.5rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1rem;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .hero-buttons .btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    /* セクションタイトル */
+    .section-title {
+        font-size: 2rem;
+    }
+
+    /* 機能グリッド */
+    .features-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* 診断 */
+    .diagnosis-container {
+        padding: 0 1rem;
+    }
+
+    .question-card {
+        padding: 1.5rem;
+    }
+
+    .question-title {
+        font-size: 1.2rem;
+    }
+
+    .options-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .form-navigation {
+        flex-direction: column;
+    }
+
+    .form-navigation .btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    /* ダッシュボード */
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .quick-actions {
+        grid-template-columns: 1fr;
+    }
+
+    /* 練習プラン */
+    .phase-tabs {
+        flex-direction: column;
+    }
+
+    .phase-tab {
+        width: 100%;
+        text-align: center;
+    }
+
+    /* 推薦 */
+    .recommendations-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* チュートリアル */
+    .tutorials-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .tutorials-filter {
+        justify-content: center;
+    }
+
+    /* 進捗管理 */
+    .progress-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .mood-selector {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* モバイル (480px以下) */
+@media (max-width: 480px) {
+    /* ナビゲーション */
+    .nav-brand {
+        font-size: 1.2rem;
+    }
+
+    .nav-brand span {
+        display: none;
+    }
+
+    /* ヒーロー */
+    .hero-title {
+        font-size: 2rem;
+    }
+
+    .hero-subtitle {
+        font-size: 0.9rem;
+    }
+
+    .hero-content {
+        padding: 1rem;
+    }
+
+    /* セクション */
+    .section {
+        padding: 2rem 0;
+    }
+
+    .section-title {
+        font-size: 1.5rem;
+    }
+
+    .section-subtitle {
+        font-size: 0.95rem;
+    }
+
+    /* 機能カード */
+    .feature-card {
+        padding: 1.5rem;
+    }
+
+    .feature-icon {
+        width: 60px;
+        height: 60px;
+        font-size: 1.5rem;
+    }
+
+    /* 診断 */
+    .question-card {
+        padding: 1rem;
+    }
+
+    .question-title {
+        font-size: 1.1rem;
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .option-content {
+        padding: 1.5rem 1rem;
+        min-height: 120px;
+    }
+
+    .option-content i {
+        font-size: 2rem;
+    }
+
+    /* ダッシュボード */
+    .dashboard-card {
+        padding: 1.5rem;
+    }
+
+    .action-btn {
+        padding: 1rem;
+    }
+
+    /* 練習プラン */
+    .practice-section {
+        padding: 1.5rem;
+    }
+
+    /* 推薦カード */
+    .recommendation-card {
+        padding: 1.5rem;
+    }
+
+    /* チュートリアル */
+    .tutorial-info {
+        padding: 1rem;
+    }
+
+    /* 進捗 */
+    .progress-card {
+        padding: 1.5rem;
+    }
+
+    /* フッター */
+    .footer {
+        padding: 1.5rem 0;
+    }
+
+    /* ボタン */
+    .btn-large {
+        padding: 0.875rem 1.5rem;
+        font-size: 1rem;
+    }
+}
+
+/* 大画面 (1400px以上) */
+@media (min-width: 1400px) {
+    .container {
+        max-width: 1400px;
+    }
+
+    .hero-title {
+        font-size: 5rem;
+    }
+
+    .section-title {
+        font-size: 3rem;
+    }
+
+    .features-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* 横向きモバイル */
+@media (max-height: 600px) and (orientation: landscape) {
+    .hero {
+        min-height: auto;
+        padding: 3rem 0;
+    }
+
+    .hero-title {
+        font-size: 2rem;
+    }
+
+    .music-note {
+        display: none;
+    }
+
+    .nav-menu {
+        height: calc(100vh - 60px);
+    }
+}
+
+/* プリント用 */
+@media print {
+    .navbar,
+    .nav-toggle,
+    .hero-buttons,
+    .footer,
+    .btn,
+    .modal {
+        display: none !important;
+    }
+
+    body {
+        background: white;
+        color: black;
+    }
+
+    .section {
+        display: block !important;
+        page-break-after: always;
+    }
+
+    .card,
+    .dashboard-card,
+    .feature-card {
+        border: 1px solid #ccc;
+        box-shadow: none;
+    }
+}
+
+/* アクセシビリティ: 動きを減らす設定 */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+
+    .music-note {
+        animation: none;
+    }
+
+    .hero::before {
+        animation: none;
+    }
+}
+
+/* ダークモード対応 (将来的な拡張用) */
+@media (prefers-color-scheme: light) {
+    /* ライトモードの場合の調整 */
+    /* 現在はダークテーマがデフォルトなので、必要に応じて実装 */
+}
+
+/* タッチデバイス用の調整 */
+@media (hover: none) and (pointer: coarse) {
+    /* タッチデバイスでのホバー効果を調整 */
+    .btn:hover,
+    .nav-link:hover,
+    .option-card:hover .option-content,
+    .feature-card:hover,
+    .action-btn:hover {
+        transform: none;
+    }
+
+    /* タッチターゲットのサイズを大きく */
+    .btn,
+    .nav-link,
+    .action-btn {
+        min-height: 44px;
+        min-width: 44px;
+    }
+}
+
+/* Made with Bob */
