@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Piano Recovery Guide - ピアノ演奏リカバリーガイド</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- ナビゲーション -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <i class="fas fa-music"></i>
+                <span>Piano Recovery Guide</span>
+            </div>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#home" class="nav-link active">ホーム</a></li>
+                <li><a href="#dashboard" class="nav-link">ダッシュボード</a></li>
+                <li><a href="#practice-plan" class="nav-link">練習プラン</a></li>
+                <li><a href="#recommendations" class="nav-link">曲の推薦</a></li>
+                <li><a href="#progress" class="nav-link">進捗管理</a></li>
+            </ul>
+            <button class="nav-toggle" id="navToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- メインコンテンツ -->
+    <main id="mainContent">
+        <!-- ホームセクション -->
+        <section id="home" class="section active">
+            <div class="hero">
+                <div class="hero-overlay"></div>
+                <div class="hero-content">
+                    <h1 class="hero-title">
+                        <span class="title-line">ピアノへの</span>
+                        <span class="title-line">再びの旅路</span>
+                    </h1>
+                    <p class="hero-subtitle">
+                        長いブランクを経て、再びピアノと向き合うあなたを<br>
+                        段階的にサポートします
+                    </p>
+                    <div class="hero-buttons">
+                        <button class="btn btn-primary btn-large" id="startDiagnosisBtn">
+                            <i class="fas fa-play-circle"></i>
+                            診断を始める
+                        </button>
+                        <button class="btn btn-secondary btn-large" id="continueBtn" style="display: none;">
+                            <i class="fas fa-arrow-right"></i>
+                            続きから始める
+                        </button>
+                    </div>
+                </div>
+                <div class="hero-decoration">
+                    <div class="music-note note-1">♪</div>
+                    <div class="music-note note-2">♫</div>
+                    <div class="music-note note-3">♪</div>
+                    <div class="music-note note-4">♫</div>
+                </div>
+            </div>
+
+            <!-- 機能紹介 -->
+            <div class="features-section">
+                <div class="container">
+                    <h2 class="section-title">主な機能</h2>
+                    <div class="features-grid">
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-clipboard-check"></i>
+                            </div>
+                            <h3>レベル診断</h3>
+                            <p>あなたの現在の状態を分析し、最適なスタート地点を提案します</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-route"></i>
+                            </div>
+                            <h3>段階的な練習プラン</h3>
+                            <p>4つのフェーズで無理なく着実にスキルを回復させます</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-robot"></i>
+                            </div>
+                            <h3>AI推薦システム</h3>
+                            <p>Gemini AIがあなたに最適な練習曲とアドバイスを提供します</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-chart-line"></i>
+                            </div>
+                            <h3>進捗管理</h3>
+                            <p>日々の練習を記録し、成長を可視化します</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-trophy"></i>
+                            </div>
+                            <h3>達成バッジ</h3>
+                            <p>マイルストーンを達成してモチベーションを維持します</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 診断セクション -->
+        <section id="diagnosis" class="section">
+            <div class="container">
+                <div class="diagnosis-container">
+                    <div class="diagnosis-header">
+                        <h2 class="section-title">レベル診断</h2>
+                        <p class="section-subtitle">いくつかの質問に答えて、あなたに最適な練習プランを作成します</p>
+                        <div class="progress-indicator">
+                            <div class="progress-bar">
+                                <div class="progress-fill" id="diagnosisProgress"></div>
+                            </div>
+                            <span class="progress-text" id="progressText">質問 1 / 5</span>
+                        </div>
+                    </div>
+
+                    <form id="diagnosisForm" class="diagnosis-form">
+                        <!-- 質問1: ブランク期間 -->
+                        <div class="question-card active" data-question="1">
+                            <h3 class="question-title">
+                                <i class="fas fa-calendar-alt"></i>
+                                ピアノから離れていた期間はどのくらいですか？
+                            </h3>
+                            <div class="options-grid">
+                                <label class="option-card">
+                                    <input type="radio" name="blankPeriod" value="less-than-1" required>
+                                    <div class="option-content">
+                                        <i class="fas fa-clock"></i>
+                                        <span>1年未満</span>
+                                    </div>
+                                </label>
+                                <label class="option-card">
+                                    <input type="radio" name="blankPeriod" value="1-3">
+                                    <div class="option-content">
+                                        <i class="fas fa-hourglass-half"></i>
+                                        <span>1〜3年</span>
+                                    </div>
+                                </label>
+                                <label class="option-card">
+                                    <input type="radio" name="blankPeriod" value="3-5">
+                                    <div class="option-content">
+                                        <i class="fas fa-hourglass"></i>
+                                        <span>3〜5年</span>
+                                    </div>
+                                </label>
+                                <label class="option-card">
+                                    <input type="radio" name="blankPeriod" value="more-than-5">
+                                    <div class="option-content">
+                                        <i class="fas fa-hourglass-end"></i>
+                                        <span>5年以上</span>
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- 質問2: 以前のレベル -->
+                        <div class="question-card" data-question="2">
+                            <h3 class="question-title">
+                                <i class="fas fa-star"></i>
+                                ピアノを弾いていた頃のレベルは？
+                            </h3>
+                            <div class="options-grid">
+                                <label class="option-card">
+                                    <input type="radio" name="previousLevel" value="beginner" required>
+                                    <div class="option-content">
+                                        <i class="fas fa-seedling"></i>
+                                        <span>初級</span>
+                                        <small>バイエル程度</small>
+                                    </div>
+                                </label>
+                                <label class="option-card">
+                                    <input type="radio" name="previousLevel" value="intermediate">
+                                    <div class="option-content">
+                                        <i class="fas fa-leaf"></i>
+                                        <span>中級</span>
+                                        <small>ソナチネ〜ソナタ程度</small>
+                                    </div>
+                                </label>
+                                <label class="option-card">
+                                    <input type="radio" name="previousLevel" value="advanced">
+                                    <div class="option-content">
+                                        <i class="fas fa-tree"></i>
+                                        <span>上級</span>
+                                        <small>ショパンエチュード程度</small>
+                                    </div>
+                                </label>
+                                <label class="option-card">
+                                    <input type="radio" name="previousLevel" value="professional">
+                                    <div class="option-content">
+                                        <i class="fas fa-crown"></i>
+                                        <span>プロフェッショナル</span>
+                                        <small>音大卒業レベル</small>
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- 質問3: 練習時間 -->
+                        <div class="question-card" data-question="3">
+                            <h3 class="question-title">
+                                <i class="fas fa-clock"></i>
+                                週にどのくらい練習できますか？
+                            </h3>
+                            <div class="options-grid">
+                                <label class="option-card">
+                                    <input type="radio" name="practiceTime" value="1-2-hours" required>
+                                    <div class="option-content">
+                                        <i class="fas fa-battery-quarter"></i>
+                                        <span>週1〜2時間</span>
+                                    </div>
+                                </label>
+                                <label class="option-card">
+                                    <input type="radio" name="practiceTime" value="3-5-hours">
+                                    <div class="option-content">
+                                        <i class="fas fa-battery-half"></i>
+                                        <span>週3〜5時間</span>
+                                    </div>
+                                </label>
+                                <label class="option-card">
+                                    <input type="radio" name="practiceTime" value="5-plus-hours">
+                                    <div class="option-content">
+                                        <i class="fas fa-battery-full"></i>
+                                        <span>週5時間以上</span>
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- 質問4: 目標 -->
+                        <div class="question-card" data-question="4">
+                            <h3 class="question-title">
+                                <i class="fas fa-bullseye"></i>
+                                あなたの目標は何ですか？
+                            </h3>
+                            <div class="options-grid">
+                                <label class="option-card">
+                                    <input type="radio" name="goal" value="hobby" required>
+                                    <div class="option-content">
+                                        <i class="fas fa-heart"></i>
+                                        <span>趣味として楽しむ</span>
+                                    </div>
+                                </label>
+                                <label class="option-card">
+                                    <input type="radio" name="goal" value="specific-song">
+                                    <div class="option-content">
+                                        <i class="fas fa-music"></i>
+                                        <span>特定の曲を弾けるようになる</span>
+                                    </div>
+                                </label>
+                                <label class="option-card">
+                                    <input type="radio" name="goal" value="recover-level">
+                                    <div class="option-content">
+                                        <i class="fas fa-redo"></i>
+                                        <span>以前のレベルに戻る</span>
+                                    </div>
+                                </label>
+                                <label class="option-card">
+                                    <input type="radio" name="goal" value="exceed-level">
+                                    <div class="option-content">
+                                        <i class="fas fa-rocket"></i>
+                                        <span>以前を超えるレベルを目指す</span>
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- 質問5: 現在の状態 -->
+                        <div class="question-card" data-question="5">
+                            <h3 class="question-title">
+                                <i class="fas fa-hand-paper"></i>
+                                現在の状態を教えてください
+                            </h3>
+                            <div class="slider-group">
+                                <div class="slider-item">
+                                    <label>指の動き</label>
+                                    <input type="range" name="fingerMovement" min="1" max="5" value="3" class="slider">
+                                    <div class="slider-labels">
+                                        <span>硬い</span>
+                                        <span>普通</span>
+                                        <span>柔軟</span>
+                                    </div>
+                                </div>
+                                <div class="slider-item">
+                                    <label>楽譜の読み方</label>
+                                    <input type="range" name="sheetReading" min="1" max="5" value="3" class="slider">
+                                    <div class="slider-labels">
+                                        <span>忘れた</span>
+                                        <span>普通</span>
+                                        <span>覚えている</span>
+                                    </div>
+                                </div>
+                                <div class="slider-item">
+                                    <label>音楽理論の記憶</label>
+                                    <input type="range" name="musicTheory" min="1" max="5" value="3" class="slider">
+                                    <div class="slider-labels">
+                                        <span>忘れた</span>
+                                        <span>普通</span>
+                                        <span>覚えている</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- ナビゲーションボタン -->
+                        <div class="form-navigation">
+                            <button type="button" class="btn btn-secondary" id="prevBtn" style="display: none;">
+                                <i class="fas fa-arrow-left"></i>
+                                前へ
+                            </button>
+                            <button type="button" class="btn btn-primary" id="nextBtn">
+                                次へ
+                                <i class="fas fa-arrow-right"></i>
+                            </button>
+                            <button type="submit" class="btn btn-primary" id="submitBtn" style="display: none;">
+                                <i class="fas fa-check"></i>
+                                診断完了
+                            </button>
+                        </div>
+                    </form>
+
+                    <!-- 診断結果 -->
+                    <div id="diagnosisResult" class="diagnosis-result" style="display: none;">
+                        <div class="result-header">
+                            <i class="fas fa-check-circle"></i>
+                            <h3>診断完了！</h3>
+                        </div>
+                        <div class="result-content" id="resultContent"></div>
+                        <button class="btn btn-primary btn-large" id="startJourneyBtn">
+                            <i class="fas fa-play"></i>
+                            練習を始める
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ダッシュボードセクション -->
+        <section id="dashboard" class="section">
+            <div class="container">
+                <h2 class="section-title">ダッシュボード</h2>
+                <div class="dashboard-grid">
+                    <!-- 現在のフェーズ -->
+                    <div class="dashboard-card phase-card">
+                        <h3><i class="fas fa-map-marked-alt"></i> 現在のフェーズ</h3>
+                        <div id="currentPhaseDisplay"></div>
+                    </div>
+
+                    <!-- 今日の練習 -->
+                    <div class="dashboard-card practice-card">
+                        <h3><i class="fas fa-tasks"></i> 今日の練習メニュー</h3>
+                        <div id="todayPracticeDisplay"></div>
+                    </div>
+
+                    <!-- 進捗サマリー -->
+                    <div class="dashboard-card progress-card">
+                        <h3><i class="fas fa-chart-line"></i> 進捗サマリー</h3>
+                        <div id="progressSummaryDisplay"></div>
+                    </div>
+
+                    <!-- クイックアクション -->
+                    <div class="dashboard-card actions-card">
+                        <h3><i class="fas fa-bolt"></i> クイックアクション</h3>
+                        <div class="quick-actions">
+                            <button class="action-btn" onclick="navigateTo('practice-plan')">
+                                <i class="fas fa-book"></i>
+                                練習プラン
+                            </button>
+                            <button class="action-btn" onclick="navigateTo('recommendations')">
+                                <i class="fas fa-lightbulb"></i>
+                                曲の推薦
+                            </button>
+                            <button class="action-btn" onclick="navigateTo('progress')">
+                                <i class="fas fa-pencil-alt"></i>
+                                練習を記録
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 練習プランセクション -->
+        <section id="practice-plan" class="section">
+            <div class="container">
+                <h2 class="section-title">練習プラン</h2>
+                <div id="practicePlanContent"></div>
+            </div>
+        </section>
+
+        <!-- 曲の推薦セクション -->
+        <section id="recommendations" class="section">
+            <div class="container">
+                <h2 class="section-title">AI推薦曲</h2>
+                <div class="recommendations-header">
+                    <p class="section-subtitle">Gemini AIがあなたに最適な練習曲を提案します</p>
+                    <button class="btn btn-primary" id="getRecommendationsBtn">
+                        <i class="fas fa-magic"></i>
+                        推薦を取得
+                    </button>
+                </div>
+                <div id="recommendationsContent"></div>
+            </div>
+        </section>
+
+        <!-- 進捗管理セクション -->
+        <section id="progress" class="section">
+            <div class="container">
+                <h2 class="section-title">進捗管理</h2>
+                <div class="progress-layout">
+                    <!-- 練習記録フォーム -->
+                    <div class="progress-card">
+                        <h3><i class="fas fa-pencil-alt"></i> 今日の練習を記録</h3>
+                        <form id="practiceLogForm" class="practice-log-form">
+                            <div class="form-group">
+                                <label>練習時間（分）</label>
+                                <input type="number" name="duration" min="1" required class="form-input">
+                            </div>
+                            <div class="form-group">
+                                <label>完了した練習項目</label>
+                                <textarea name="completedItems" rows="3" class="form-input" placeholder="例: スケール練習、ハノン No.1"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label>メモ</label>
+                                <textarea name="notes" rows="3" class="form-input" placeholder="気づいたことや感想を記録"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label>今日の気分</label>
+                                <div class="mood-selector">
+                                    <label class="mood-option">
+                                        <input type="radio" name="mood" value="excellent" required>
+                                        <span>😊 最高</span>
+                                    </label>
+                                    <label class="mood-option">
+                                        <input type="radio" name="mood" value="good">
+                                        <span>🙂 良い</span>
+                                    </label>
+                                    <label class="mood-option">
+                                        <input type="radio" name="mood" value="okay">
+                                        <span>😐 普通</span>
+                                    </label>
+                                    <label class="mood-option">
+                                        <input type="radio" name="mood" value="challenging">
+                                        <span>😓 大変</span>
+                                    </label>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-save"></i>
+                                記録を保存
+                            </button>
+                        </form>
+                    </div>
+
+                    <!-- 進捗グラフ -->
+                    <div class="progress-card">
+                        <h3><i class="fas fa-chart-bar"></i> 練習時間の推移</h3>
+                        <canvas id="practiceChart"></canvas>
+                    </div>
+
+                    <!-- 練習履歴 -->
+                    <div class="progress-card full-width">
+                        <h3><i class="fas fa-history"></i> 練習履歴</h3>
+                        <div id="practiceHistory"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 設定モーダル -->
+    <div id="settingsModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3><i class="fas fa-cog"></i> 設定</h3>
+                <button class="modal-close" onclick="closeModal('settingsModal')">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label>Gemini APIキー</label>
+                    <input type="password" id="apiKeyInput" class="form-input" placeholder="APIキーを入力">
+                    <small style="display: block; margin-top: 0.5rem; color: var(--text-muted);">
+                        <i class="fas fa-info-circle"></i> APIキーはブラウザに安全に保存されます（サーバーには送信されません）
+                    </small>
+                </div>
+                
+                <div style="background: rgba(74, 144, 226, 0.1); border-left: 3px solid var(--accent-color); padding: 1rem; border-radius: 8px; margin-bottom: 1.5rem;">
+                    <h4 style="color: var(--accent-color); margin-bottom: 0.5rem; font-size: 0.95rem;">
+                        <i class="fas fa-key"></i> APIキーの取得方法
+                    </h4>
+                    <ol style="margin: 0; padding-left: 1.5rem; color: var(--text-muted); font-size: 0.9rem; line-height: 1.6;">
+                        <li><a href="https://makersuite.google.com/app/apikey" target="_blank" style="color: var(--accent-color); text-decoration: underline;">Google AI Studio</a> にアクセス</li>
+                        <li>Googleアカウントでログイン</li>
+                        <li>「Create API Key」をクリック</li>
+                        <li>生成されたAPIキーをコピーして上記に貼り付け</li>
+                    </ol>
+                    <p style="margin: 0.75rem 0 0 0; font-size: 0.85rem; color: var(--text-muted);">
+                        <i class="fas fa-exclamation-triangle"></i> APIキーは20文字以上の英数字、ハイフン、アンダースコアで構成されています
+                    </p>
+                </div>
+
+                <button class="btn btn-primary" onclick="saveApiKey()">
+                    <i class="fas fa-save"></i>
+                    保存
+                </button>
+                
+                <div style="margin-top: 2rem; padding-top: 2rem; border-top: 1px solid var(--card-border);">
+                    <h4 style="color: var(--danger-color); margin-bottom: 1rem; font-size: 0.95rem;">
+                        <i class="fas fa-exclamation-triangle"></i> データのリセット
+                    </h4>
+                    <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1rem;">
+                        すべてのデータ（診断結果、練習記録、進捗、APIキー）を削除して初期状態に戻します。この操作は取り消せません。
+                    </p>
+                    <button class="btn btn-danger" onclick="confirmResetAllData()">
+                        <i class="fas fa-trash-alt"></i>
+                        すべてのデータをリセット
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- フッター -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 Piano Recovery Guide. All rights reserved.</p>
+            <button class="btn btn-text" onclick="openModal('settingsModal')">
+                <i class="fas fa-cog"></i>
+                設定
+            </button>
+        </div>
+    </footer>
+
+    <!-- スクリプト -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/storage.js"></script>
+    <script src="js/diagnosis.js"></script>
+    <script src="js/practice-plan.js"></script>
+    <script src="js/gemini-api.js"></script>
+    <script src="js/progress.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
